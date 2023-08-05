@@ -1,0 +1,23 @@
+services:
+  validation:
+    image: vaidik10/validation
+    ports:
+      - "6000:6000"
+    volumes:
+      - ./:/data
+    networks:
+      - vaidNetwork
+
+  calculate:
+    image: vaidik10/calculate
+    volumes:
+      - ./:/data
+    restart: always
+    networks:
+      - vaidNetwork
+    
+
+networks:
+  vaidNetwork:
+    driver: bridge
+    attachable: true
